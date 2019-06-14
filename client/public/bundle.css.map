@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "../src/Item.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\n    import { createEventDispatcher } from \"svelte\";\n\n    const dispatch = createEventDispatcher();\n\n    export let name;\n    export let quantity;\n    let showControls = false;\n\n\tconst addPoint = () => (quantity += 1);\n\tconst removePoint = () => (quantity -= 1);\n\tconst toggleControls = () => (showControls = !showControls);\n\tconst onDelete = () => dispatch(\"removeitem\", name);\n</script>\n\n<style>\n\th1 {\n\t\tcolor: #204f6e;\n\t}\n\th3 {\n\t\tmargin-bottom: 10px;\n\t}\n</style>\n\n<div class=\"card\">\n    <h1>\n        {name}\n        <button class=\"btn btn-sm\" on:click={toggleControls}>\n            {#if showControls}-{:else}+{/if}\n        </button>\n        <button class=\"btn btn-danger btn-sm\" on:click={onDelete}>x</button>\n    </h1>\n  <h3>Quantity: {quantity}</h3>\n    {#if showControls}\n        <button class=\"btn\" on:click={addPoint}>+1</button>\n        <button class=\"btn btn-dark\" on:click={removePoint}>-1</button>\n        <input type=\"number\" bind:value={quantity} />\n    {/if}\n</div>\n"
+  ],
+  "names": [],
+  "mappings": "AAgBC,EAAE,eAAC,CAAC,AACH,KAAK,CAAE,OAAO,AACf,CAAC,AACD,EAAE,eAAC,CAAC,AACH,aAAa,CAAE,IAAI,AACpB,CAAC"
+}
